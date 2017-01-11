@@ -4,16 +4,12 @@
 // Code for: https://youtu.be/bGz7mv2vD6g
 
 var population;
-var lifespan = 400;
+var lifespan = 600;
 var lifeP, genP;
 var count = 0;
 var target;
 var maxforce = 0.2;
 var blocks = [];
-var rx = 100;
-var ry = 150;
-var rw = 200;
-var rh = 10;
 var xs, ys, xe, ye;
 var pnt = 0;
 var first = true;
@@ -22,17 +18,17 @@ var button;
 var gen = 0;
 
 function setup() {
-    createCanvas(800, 500);
+    createCanvas(1000, 500);
     population = new Population();
     lifeP = createP();
     genP = createP();
-    target = createVector(width / 2, 50);
-    blocks[pnt] = new block(rx, ry, rx + rw, ry + rh);
+    target = createVector(width-50, height/2);
+    blocks[pnt] = new block(220, 4, 220 +20, height/2+100);
     pnt++;
-    blocks[pnt] = new block(200, 300, 400, 320);
+    blocks[pnt] = new block(450, height/2-100, 450 +20, height);
     pnt++;
-    blocks[pnt] = new block(400, 200, 400 + 200, 200 + 20);
-    pnt++; hdsl
+    blocks[pnt] = new block(700, 0+4, 700 + 20, height/2+100);
+    pnt++;
 }
 
 function draw() {
