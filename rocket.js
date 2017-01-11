@@ -43,7 +43,7 @@ function Rocket(dna) {
         var d = dist(this.pos.x, this.pos.y, target.x, target.y);
         if (d < 10) {
             this.completed = true;
-            console.log("We have a winner! Generation: "+ gen);
+            console.log("We have a winner! Generation: " + gen);
             this.pos = target.copy();
         }
         for (var i = 0; i < blocks.length; i++) {
@@ -64,8 +64,6 @@ function Rocket(dna) {
 
         this.applyForce(this.dna.genes[count]);
         if (!this.completed && !this.crashed) {
-            if (this.chosenOne) console.log("completed");
-
             this.vel.add(this.acc);
             this.pos.add(this.vel);
             this.acc.mult(0);
@@ -74,7 +72,7 @@ function Rocket(dna) {
     }
 
     this.resetChosen = function () {
-        this.pos = createVector(this.startx,this.starty);
+        this.pos = createVector(this.startx, this.starty);
         this.vel = createVector();
         this.acc = createVector();
         this.completed = false;
@@ -84,7 +82,7 @@ function Rocket(dna) {
     }
 
     this.show = function () {
-       /* push();
+        push();
         noStroke();
 
         var d = floor(dist(this.pos.x, this.pos.y, target.x, target.y));
@@ -97,7 +95,7 @@ function Rocket(dna) {
         rectMode(CENTER);
         rect(0, 0, 25, 5);
 
-        pop();/*
+        pop();
     }
 
 }

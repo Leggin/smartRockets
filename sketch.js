@@ -1,7 +1,4 @@
-// Daniel Shiffman
-// http://codingrainbow.com
-// http://patreon.com/codingrainbow
-// Code for: https://youtu.be/bGz7mv2vD6g
+// based on Code for: https://youtu.be/bGz7mv2vD6g from Daniel Shiffman
 
 var population;
 var lifespan = 600;
@@ -22,12 +19,12 @@ function setup() {
     population = new Population();
     lifeP = createP();
     genP = createP();
-    target = createVector(width-50, height/2);
-    blocks[pnt] = new block(220, 4, 220 +20, height/2+100);
+    target = createVector(width - 50, height / 2);
+    blocks[pnt] = new block(220, 4, 220 + 20, height / 2 + 100);
     pnt++;
-    blocks[pnt] = new block(450, height/2-100, 450 +20, height);
+    blocks[pnt] = new block(450, height / 2 - 100, 450 + 20, height);
     pnt++;
-    blocks[pnt] = new block(700, 0+4, 700 + 20, height/2+100);
+    blocks[pnt] = new block(700, 0 + 4, 700 + 20, height / 2 + 100);
     pnt++;
 }
 
@@ -37,9 +34,9 @@ function draw() {
     for (var i = 0; i < blocks.length; i++) {
         blocks[i].show();
     }
+
     lifeP.html(count);
     genP.html("Generation:" + gen);
-    //population.run();
 
     if (population.run()) {
         count = lifespan - 1;
@@ -49,11 +46,12 @@ function draw() {
         population.evaluate();
         population.selection();
         gen++;
-        //population = new Population();
         count = 0;
     }
+
     fill(255);
     ellipse(target.x, target.y, 16, 16);
+
 }
 
 

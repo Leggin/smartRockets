@@ -39,7 +39,6 @@ function DNA(genes) {
             }
 
         }
-        console.log("in");
         return new DNA(newgenes);
     }
 
