@@ -1,5 +1,5 @@
 // based on Code for: https://youtu.be/bGz7mv2vD6g from Daniel Shiffman
-
+ 
 function Rocket(dna) {
     this.startx = 0;
     this.starty = height / 2;
@@ -9,6 +9,8 @@ function Rocket(dna) {
     this.completed = false;
     this.crashed = false;
     this.chosenOne = false;
+    this.gravity = createVector(1,0);
+    this.gravity.setMag(0.1);
 
     if (dna) {
         this.dna = dna;
@@ -19,6 +21,7 @@ function Rocket(dna) {
 
     this.applyForce = function (force) {
         this.acc.add(force);
+        this.acc.add(this.gravity);
     }
 
     this.calcFitness = function () {
