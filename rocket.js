@@ -9,7 +9,7 @@ function Rocket(dna) {
     this.completed = false;
     this.crashed = false;
     this.chosenOne = false;
-    this.gravity = createVector(1,0);
+    this.gravity = createVector(0,0);
     this.gravity.setMag(0.1);
 
     if (dna) {
