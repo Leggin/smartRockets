@@ -32,7 +32,7 @@ function setup() {
     blocks[pnt] = new block(200, 300, 400, 320);
     pnt++;
     blocks[pnt] = new block(400, 200, 400 + 200, 200 + 20);
-    pnt++; 
+    pnt++; hdsl
 }
 
 function draw() {
