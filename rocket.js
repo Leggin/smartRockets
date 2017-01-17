@@ -1,12 +1,16 @@
 // based on Code for: https://youtu.be/bGz7mv2vD6g from Daniel Shiffman
-
+ 
 function Rocket(dna) {
-    this.pos = createVector(width / 2, height);
+    this.startx = 0;
+    this.starty = height / 2;
+    this.pos = createVector(this.startx, this.starty);
     this.vel = createVector();
     this.acc = createVector();
     this.completed = false;
     this.crashed = false;
     this.chosenOne = false;
+    this.gravity = createVector(0,0);
+    this.gravity.setMag(0.1);
 
     if (dna) {
         this.dna = dna;
@@ -17,6 +21,7 @@ function Rocket(dna) {
 
     this.applyForce = function (force) {
         this.acc.add(force);
+        this.acc.add(this.gravity);
     }
 
     this.calcFitness = function () {
@@ -41,6 +46,7 @@ function Rocket(dna) {
         var d = dist(this.pos.x, this.pos.y, target.x, target.y);
         if (d < 10) {
             this.completed = true;
+            console.log("We have a winner! Generation: " + gen);
             this.pos = target.copy();
         }
         for (var i = 0; i < blocks.length; i++) {
@@ -61,8 +67,6 @@ function Rocket(dna) {
 
         this.applyForce(this.dna.genes[count]);
         if (!this.completed && !this.crashed) {
-            if (this.chosenOne) console.log("completed");
-
             this.vel.add(this.acc);
             this.pos.add(this.vel);
             this.acc.mult(0);
@@ -71,7 +75,7 @@ function Rocket(dna) {
     }
 
     this.resetChosen = function () {
-        this.pos = createVector(width / 2, height);
+        this.pos = createVector(this.startx, this.starty);
         this.vel = createVector();
         this.acc = createVector();
         this.completed = false;
@@ -89,7 +93,7 @@ function Rocket(dna) {
         if (this.chosenOne)
             fill(255, 255, 0);
         translate(this.pos.x, this.pos.y);
-        text(d, -12, -2);
+        //text(d, -12, -2);
         rotate(this.vel.heading());
         rectMode(CENTER);
         rect(0, 0, 25, 5);

@@ -1,7 +1,7 @@
 // based on Code for: https://youtu.be/bGz7mv2vD6g from Daniel Shiffman
 function Population() {
     this.rockets = [];
-    this.popsize = 180;
+    this.popsize = 150;
     this.matingpool = [];
 
     for (var i = 0; i < this.popsize; i++) {
@@ -38,20 +38,13 @@ function Population() {
         for (var i = 0; i < this.rockets.length; i++) {
             if (this.rockets[i].fitness > fittest.fitness) {
                 fittest = this.rockets[i];
-                console.log("so fitt" + fittest.fitness);
-
+                console.log("Fittest score: "+fittest.fitness);
             }
             var parentA = random(this.matingpool).dna;
             var parentB = random(this.matingpool).dna;
-            if (i < this.rockets.length / 2) {
-                var child = parentA.randomCrossover(parentB);
-                child.mutation();
-                newRockets[i] = new Rocket(child);
-            } else {
-                var child = parentA.crossover(parentB);
-                child.mutation();
-                newRockets[i] = new Rocket(child);
-            }
+            var child = parentA.pairing(parentB);
+            child.mutation();
+            newRockets[i] = new Rocket(child);
         }
         fittest.resetChosen();
         newRockets[this.rockets.length - 1] = fittest;
