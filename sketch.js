@@ -20,12 +20,12 @@ function setup() {
     lifeP = createP();
     genP = createP();
     target = createVector(width - 50, height / 2);
-    blocks[pnt] = new block(220, 0, 220 + 20, height / 2 + 100);
+  /*  blocks[pnt] = new block(220, 0, 220 + 20, height / 2 + 100);
     pnt++;
     blocks[pnt] = new block(450, height / 2 - 100, 450 + 20, height);
     pnt++;
     blocks[pnt] = new block(700, 0, 700 + 20, height / 2 + 100);
-    pnt++;
+    pnt++;*/
 }
 
 function draw() {
